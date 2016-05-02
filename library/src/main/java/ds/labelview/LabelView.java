@@ -35,6 +35,10 @@ public class LabelView extends View {
         int typefaceIndex = -1;
         int styleIndex = -1;
         String fontFamily = null;
+        float shadowRadius;
+        float shadowDx;
+        float shadowDy;
+        int shadowColor;
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LabelView);
         text = a.getText(R.styleable.LabelView_text);
@@ -44,9 +48,16 @@ public class LabelView extends View {
         typefaceIndex = a.getInt(R.styleable.LabelView_typeface, typefaceIndex);
         styleIndex = a.getInt(R.styleable.LabelView_textStyle, styleIndex);
         fontFamily = a.getString(R.styleable.LabelView_fontFamily);
+        shadowRadius = a.getDimension(R.styleable.LabelView_shadowRadius, 0);
+        shadowDx = a.getDimension(R.styleable.LabelView_shadowDx, 0);
+        shadowDy = a.getDimension(R.styleable.LabelView_shadowDy, 0);
+        shadowColor = a.getColor(R.styleable.LabelView_shadowColor, Color.BLACK);
         a.recycle();
 
         initPaint();
+
+        if (shadowRadius > 0)
+            textPaint.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor);
 
         setTypefaceFromAttrs(fontFamily, typefaceIndex, styleIndex);
     }
@@ -129,10 +140,6 @@ public class LabelView extends View {
 
     }
 
-    private StaticLayout provideLayout(CharSequence text, int width) {
-        return new StaticLayout(text, textPaint, width, getLayoutAlignment(), 1, 0, true);
-    }
-
     public void setTextColor(int color) {
         textPaint.setColor(color);
         invalidate();
@@ -168,6 +175,15 @@ public class LabelView extends View {
             textPaint.setTextSkewX(0);
             setTypeface(tf);
         }
+    }
+
+    public void setShadowLayer(float radius, float dx, float dy, int color) {
+        textPaint.setShadowLayer(radius, dx, dy, color);
+        invalidate();
+    }
+
+    private StaticLayout provideLayout(CharSequence text, int width) {
+        return new StaticLayout(text, textPaint, width, getLayoutAlignment(), 1, 0, true);
     }
 
     private void setTypefaceFromAttrs(String fontFamily, int typefaceIndex, int styleIndex) {

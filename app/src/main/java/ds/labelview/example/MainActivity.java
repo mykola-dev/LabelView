@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             view.setGravity(GRAVITY);
             view.setTextColor(COLOR);
             view.setTextSize(SIZE_DP);
+            view.setShadowLayer(10, 0, 10, Color.RED);
             view.setText(TEXT);
         }
         trace();
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             view.setGravity(GRAVITY);
             view.setTextColor(COLOR);
             view.setTextSize(SIZE_DP);
+            view.setShadowLayer(10, 0, 10, Color.RED);
             view.setText(TEXT);
         }
         trace();

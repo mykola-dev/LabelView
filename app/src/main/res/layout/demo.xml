@@ -11,11 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        app:gravity="center_horizontal"
+        android:gravity="center_horizontal"
         app:text="LabelView"
         app:textColor="#009b00"
         app:textSize="12sp"
         app:textStyle="bold|italic"
+        app:shadowColor="#f00"
+        app:shadowDx="1dp"
+        app:shadowDy="1dp"
+        app:shadowRadius="2dp"
         />
 
     <TextView
@@ -26,6 +30,10 @@
         android:text="TextView"
         android:textSize="12dp"
         android:textStyle="bold"
+        android:shadowColor="#f00"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         />
 
 </LinearLayout>
