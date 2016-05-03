@@ -23,6 +23,7 @@ public class LabelView extends View {
     private int gravity = Gravity.START;
     private int textColor = Color.BLACK;
     private float size = dp(12);
+    private int maximum = 0;
 
     public LabelView(Context context) {
         super(context);
@@ -63,6 +64,7 @@ public class LabelView extends View {
         shadowDx = a.getFloat(R.styleable.LabelView_android_shadowDx, 0);
         shadowDy = a.getFloat(R.styleable.LabelView_android_shadowDy, 0);
         shadowColor = a.getColor(R.styleable.LabelView_android_shadowColor, Color.BLACK);
+        maximum = a.getInt(R.styleable.LabelView_android_maxLines, maximum);
         a.recycle();
 
         initPaint();
@@ -80,18 +82,6 @@ public class LabelView extends View {
         textPaint.setColor(textColor);
         if (text == null)
             text = "";
-    }
-
-    public void setText(CharSequence t) {
-        text = t != null ? t : "";
-        requestLayout();
-        invalidate();
-    }
-
-    public void setGravity(int gravity) {
-        this.gravity = gravity;
-        requestLayout();
-        invalidate();
     }
 
     @Override
@@ -118,7 +108,8 @@ public class LabelView extends View {
 
 
         layout = provideLayout(text, width - getPaddingLeft() - getPaddingRight());
-        int desiredHeight = layout.getHeight() + getPaddingTop() + getPaddingBottom();
+
+        int desiredHeight = getTextHeight() + getPaddingTop() + getPaddingBottom();
 
         //Measure Height
         if (heightMode == MeasureSpec.EXACTLY) {
@@ -132,6 +123,40 @@ public class LabelView extends View {
         setMeasuredDimension(width, height);
     }
 
+    @Override
+    public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        canvas.save();
+        int verticalOffset = 0;
+
+        // translate in by our padding
+        /* shortcircuit calling getVerticaOffset() */
+        if ((gravity & Gravity.VERTICAL_GRAVITY_MASK) != Gravity.TOP) {
+            verticalOffset = getVerticalOffset();
+        }
+        canvas.translate(getPaddingLeft(), getPaddingTop() + verticalOffset);
+        canvas.clipRect(0,0,layout.getEllipsizedWidth(),getTextHeight());
+        layout.draw(canvas);
+        canvas.restore();
+
+    }
+
+    public CharSequence getText() {
+        return text;
+    }
+
+    public void setText(CharSequence t) {
+        text = t != null ? t : "";
+        requestLayout();
+        invalidate();
+    }
+
+    public void setGravity(int gravity) {
+        this.gravity = gravity;
+        requestLayout();
+        invalidate();
+    }
+
     public void setTextSize(float size) {
         Context c = getContext();
         Resources r = c.getResources();
@@ -139,16 +164,6 @@ public class LabelView extends View {
         textPaint.setTextSize(pixels);
         requestLayout();
         invalidate();
-    }
-
-    @Override
-    public void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.save();
-        canvas.translate(getPaddingLeft(), getPaddingTop());
-        layout.draw(canvas);
-        canvas.restore();
-
     }
 
     public void setTextColor(int color) {
@@ -190,6 +205,12 @@ public class LabelView extends View {
 
     public void setShadowLayer(float radius, float dx, float dy, int color) {
         textPaint.setShadowLayer(radius, dx, dy, color);
+        invalidate();
+    }
+
+    public void setMaxLines(int maxlines) {
+        maximum = maxlines;
+        requestLayout();
         invalidate();
     }
 
@@ -238,6 +259,35 @@ public class LabelView extends View {
                 break;
         }
         return alignment;
+    }
+
+    private int getVerticalOffset() {
+        int voffset = 0;
+        final int gravity = this.gravity & Gravity.VERTICAL_GRAVITY_MASK;
+
+        int boxht = getBoxHeight();
+        int textht = getTextHeight();
+
+        if (textht < boxht) {
+            if (gravity == Gravity.BOTTOM)
+                voffset = boxht - textht;
+            else // (gravity == Gravity.CENTER_VERTICAL)
+                voffset = (boxht - textht) >> 1;
+        }
+        return voffset;
+    }
+
+    private int getTextHeight() {
+        if (maximum > 0 && maximum < layout.getLineCount())
+            return layout.getLineTop(maximum);
+        else {
+            return layout.getHeight();
+        }
+    }
+
+    private int getBoxHeight() {
+        int padding = getPaddingTop() + getPaddingBottom();
+        return getMeasuredHeight() - padding;
     }
 
     private float dp(float dips) {

@@ -41,6 +41,7 @@
         <attr name="android:shadowDx" />
         <attr name="android:shadowDy" />
         <attr name="android:shadowRadius" />
+        <attr name="android:maxLines" />
 
         <attr name="android:gravity">
             <!-- <flag name="left" value="3" />

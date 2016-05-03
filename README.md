@@ -8,7 +8,7 @@ Inspired by https://engineering.instagram.com/posts/1633609290216367/improving-c
 
 ### Gradle
 ```groovy
-compile "ds.labelview:library:0.2.0"
+compile "ds.labelview:library:0.4.0"
 ```
 
 ### Java
@@ -25,14 +25,14 @@ view.setText("Hello World");
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:gravity="center_horizontal"
-        app:text="LabelView"
-        app:textColor="#009b00"
-        app:textSize="12sp"
-        app:textStyle="bold|italic"
-        app:shadowColor="#f00"
-        app:shadowDx="1dp"
-        app:shadowDy="1dp"
-        app:shadowRadius="2dp"
+        android:text="LabelView"
+        android:textColor="#009b00"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        android:shadowColor="#f00"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         />
 ```
 
