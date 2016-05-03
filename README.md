@@ -25,7 +25,7 @@ view.setText("Hello World");
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:gravity="center_horizontal"
-        android:text="LabelView"
+        android:text="Hello World"
         android:textColor="#009b00"
         android:textSize="12sp"
         android:textStyle="bold|italic"
