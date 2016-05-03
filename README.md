@@ -8,7 +8,7 @@ Inspired by https://engineering.instagram.com/posts/1633609290216367/improving-c
 
 ### Gradle
 ```groovy
-compile "ds.labelview:library:0.4.0"
+compile "ds.labelview:library:0.4.1"
 ```
 
 ### Java

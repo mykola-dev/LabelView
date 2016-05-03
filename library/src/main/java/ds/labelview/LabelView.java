@@ -22,7 +22,7 @@ public class LabelView extends View {
     private CharSequence text;
     private int gravity = Gravity.START;
     private int textColor = Color.BLACK;
-    private float size = dp(12);
+    private float size = dp(14);
     private int maximum = 0;
 
     public LabelView(Context context) {
@@ -135,7 +135,7 @@ public class LabelView extends View {
             verticalOffset = getVerticalOffset();
         }
         canvas.translate(getPaddingLeft(), getPaddingTop() + verticalOffset);
-        canvas.clipRect(0,0,layout.getEllipsizedWidth(),getTextHeight());
+        canvas.clipRect(0, 0, layout.getWidth(), getTextHeight());
         layout.draw(canvas);
         canvas.restore();
 
