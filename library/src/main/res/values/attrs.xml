@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="LabelView">
+        <!--
 
-        <attr name="text" format="string" />
-        <attr name="fontFamily" format="string" />
-        <attr name="textSize" format="dimension" />
-        <attr name="textColor" format="color" />
-        <attr name="shadowColor" format="color" />
-        <attr name="shadowDx" format="dimension" />
-        <attr name="shadowDy" format="dimension" />
-        <attr name="shadowRadius" format="dimension" />
+                <attr name="lv_text" format="string" />
+                <attr name="lv_fontFamily" format="string" />
+                <attr name="lv_textSize" format="dimension" />
+                <attr name="lv_textColor" format="color" />
+                <attr name="lv_shadowColor" format="color" />
+                <attr name="lv_shadowDx" format="dimension" />
+                <attr name="lv_shadowDy" format="dimension" />
+                <attr name="lv_shadowRadius" format="dimension" />
 
-        <attr name="gravity">
-            <flag name="left" value="3" />
-            <flag name="right" value="5" />
-            <flag name="center_horizontal" value="1" />
+                <attr name="lv_gravity">
+                    <flag name="left" value="3" />
+                    <flag name="right" value="5" />
+                    <flag name="center_horizontal" value="1" />
+                </attr>
+
+                <attr name="lv_typeface">
+                    <enum name="normal" value="0" />
+                    <enum name="sans" value="1" />
+                    <enum name="serif" value="2" />
+                    <enum name="monospace" value="3" />
+                </attr>
+
+                <attr name="lv_textStyle">
+                    <flag name="normal" value="0" />
+                    <flag name="bold" value="1" />
+                    <flag name="italic" value="2" />
+                </attr>
+        -->
+
+
+        <attr name="android:text" />
+        <attr name="android:fontFamily" />
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:shadowColor" />
+        <attr name="android:shadowDx" />
+        <attr name="android:shadowDy" />
+        <attr name="android:shadowRadius" />
+
+        <attr name="android:gravity">
+            <!-- <flag name="left" value="3" />
+             <flag name="right" value="5" />
+             <flag name="center_horizontal" value="1" />-->
         </attr>
 
-        <attr name="typeface">
-            <enum name="normal" value="0" />
-            <enum name="sans" value="1" />
-            <enum name="serif" value="2" />
-            <enum name="monospace" value="3" />
+        <attr name="android:typeface">
+            <!-- <enum name="normal" value="0" />
+             <enum name="sans" value="1" />
+             <enum name="serif" value="2" />
+             <enum name="monospace" value="3" />-->
         </attr>
 
-        <attr name="textStyle">
-            <flag name="normal" value="0" />
-            <flag name="bold" value="1" />
-            <flag name="italic" value="2" />
+        <attr name="android:textStyle">
+            <!-- <flag name="normal" value="0" />
+             <flag name="bold" value="1" />
+             <flag name="italic" value="2" />-->
         </attr>
-
-
-        <!--  <attr name="android:text" />
-          <attr name="android:fontFamily" />
-          <attr name="android:textSize" />
-          <attr name="android:textColor" />
-
-
-          <attr name="android:gravity">
-             &lt;!&ndash; <flag name="left" value="3" />
-              <flag name="right" value="5" />
-              <flag name="center_horizontal" value="1" />&ndash;&gt;
-          </attr>
-
-          <attr name="android:typeface">
-             &lt;!&ndash; <enum name="normal" value="0" />
-              <enum name="sans" value="1" />
-              <enum name="serif" value="2" />
-              <enum name="monospace" value="3" />&ndash;&gt;
-          </attr>
-
-          <attr name="android:textStyle">
-             &lt;!&ndash; <flag name="normal" value="0" />
-              <flag name="bold" value="1" />
-              <flag name="italic" value="2" />&ndash;&gt;
-          </attr>-->
 
     </declare-styleable>
 </resources>

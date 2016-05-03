@@ -41,7 +41,7 @@ public class LabelView extends View {
         int shadowColor;
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LabelView);
-        text = a.getText(R.styleable.LabelView_text);
+       /* text = a.getText(R.styleable.LabelView_text);
         size = a.getDimension(R.styleable.LabelView_textSize, size);
         textColor = a.getColor(R.styleable.LabelView_textColor, textColor);
         gravity = a.getInt(R.styleable.LabelView_gravity, gravity);
@@ -51,7 +51,18 @@ public class LabelView extends View {
         shadowRadius = a.getDimension(R.styleable.LabelView_shadowRadius, 0);
         shadowDx = a.getDimension(R.styleable.LabelView_shadowDx, 0);
         shadowDy = a.getDimension(R.styleable.LabelView_shadowDy, 0);
-        shadowColor = a.getColor(R.styleable.LabelView_shadowColor, Color.BLACK);
+        shadowColor = a.getColor(R.styleable.LabelView_shadowColor, Color.BLACK);*/
+        text = a.getText(R.styleable.LabelView_android_text);
+        size = a.getDimension(R.styleable.LabelView_android_textSize, size);
+        textColor = a.getColor(R.styleable.LabelView_android_textColor, textColor);
+        gravity = a.getInt(R.styleable.LabelView_android_gravity, gravity);
+        typefaceIndex = a.getInt(R.styleable.LabelView_android_typeface, typefaceIndex);
+        styleIndex = a.getInt(R.styleable.LabelView_android_textStyle, styleIndex);
+        fontFamily = a.getString(R.styleable.LabelView_android_fontFamily);
+        shadowRadius = a.getFloat(R.styleable.LabelView_android_shadowRadius, 0);
+        shadowDx = a.getFloat(R.styleable.LabelView_android_shadowDx, 0);
+        shadowDy = a.getFloat(R.styleable.LabelView_android_shadowDy, 0);
+        shadowColor = a.getColor(R.styleable.LabelView_android_shadowColor, Color.BLACK);
         a.recycle();
 
         initPaint();

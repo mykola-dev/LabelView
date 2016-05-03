@@ -4,6 +4,12 @@
     >
 
     <item
+        android:id="@+id/xml"
+        android:title="XML"
+        app:showAsAction="always"
+        />
+
+    <item
         android:id="@+id/text_view"
         android:title="TextView"
         app:showAsAction="always"
@@ -14,4 +20,5 @@
         android:title="LabelView"
         app:showAsAction="always"
         />
+
 </menu>

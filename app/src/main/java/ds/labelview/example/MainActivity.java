@@ -79,9 +79,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.label_view:
                 fillWithLabelViews();
                 break;
+            case R.id.xml:
+                fillFromXml();
+                break;
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void fillFromXml() {
+        getLayoutInflater().inflate(R.layout.demo,root,true);
     }
 
     private void trace(String... text) {
