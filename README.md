@@ -1,7 +1,7 @@
 # LabelView
 Efficient and lightweight TextView
 
-Inspired by https://engineering.instagram.com/posts/1633609290216367/improving-comment-rendering-on-android/
+Inspired by http://instagram-engineering.tumblr.com/post/114508858967/improving-comment-rendering-on-android
 
 
 ## How to use
